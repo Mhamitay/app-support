@@ -3,34 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RideFlex Support</title>
+    <title>[Your App Name] Support</title>
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            max-width: 700px; 
-            margin: 60px auto; 
-            line-height: 1.6; 
-            padding: 0 15px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        h1 { color: #2c3e50; }
-        a { color: #0078d7; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        footer { margin-top: 50px; font-size: 0.9em; color: #777; }
+
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            max-width: 700px;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 50px;
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 { 
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        strong {
+            color: #667eea;
+        }
+
+        ul {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        ul li {
+            background: #f8f9ff;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        ul li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        a { 
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        a:hover { 
+            color: #764ba2;
+        }
+
+        .response-time {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 30px 0;
+            font-weight: 500;
+        }
+
+        footer { 
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #f0f0f0;
+            text-align: center;
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        .developer {
+            margin-top: 15px;
+            color: #667eea;
+            font-weight: 600;
+            font-size: 1em;
+        }
+
+        .developer span {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .app-selector {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 2px solid #667eea;
+            text-align: center;
+        }
+
+        .app-selector label {
+            display: block;
+            color: #667eea;
+            font-weight: 600;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        .app-selector select {
+            width: 100%;
+            max-width: 400px;
+            padding: 15px 20px;
+            font-size: 1.1em;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            background: white;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .app-selector select:hover {
+            border-color: #764ba2;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .app-selector select:focus {
+            outline: none;
+            border-color: #764ba2;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        #supportContent {
+            animation: slideIn 0.5s ease-in;
+        }
+
+        #supportContent.hidden {
+            display: none;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>RideFlex Support</h1>
-    <p>Thank you for using <strong>RideFlex Support</strong>!</p>
-    <p>If you have any questions, issues, or feedback, please contact us using the details below:</p>
-    
-    <ul>
-        <li>Email: <a href="mailto:support@yourdomain.com">support@RideFlex.com</a></li>
-    </ul>
+    <div class="container">
+        <h1>App Support</h1>
+        
+        <div class="app-selector">
+            <label for="appSelect">Select Your App:</label>
+            <select id="appSelect" onchange="updateAppInfo()">
+                <option value="">-- Choose an app --</option>
+                <option value="rideflex">RideFlex</option>
+                <option value="moonstore">Moon Store</option>
+            </select>
+        </div>
 
-    <p>We typically respond within 24–48 hours.</p>
+        <div id="supportContent" class="hidden">
+            <p>Thank you for using <strong id="appName"></strong>!</p>
+            <p>If you have any questions, issues, or feedback, please contact us using the details below:</p>
+            
+            <ul>
+                <li>📧 Email: <a href="mailto:support@yourdomain.com" id="supportEmail">support@yourdomain.com</a></li>
+            </ul>
+        </div>
 
-    <footer>
-        <p>© 2025 [Your Company Name]. All rights reserved.</p>
-    </footer>
+        <div class="response-time">
+            <p>⏱️ We typically respond within 24–48 hours</p>
+        </div>
+
+        <footer>
+            <p>© 2025 [Your Company Name]. All rights reserved.</p>
+            <p class="developer">Developed by <span>Hamitay</span></p>
+        </footer>
+    </div>
+
+    <script>
+        function updateAppInfo() {
+            const select = document.getElementById('appSelect');
+            const supportContent = document.getElementById('supportContent');
+            const appName = document.getElementById('appName');
+            const supportEmail = document.getElementById('supportEmail');
+            
+            const selectedValue = select.value;
+            
+            if (selectedValue === '') {
+                supportContent.classList.add('hidden');
+                return;
+            }
+            
+            // App-specific information
+            const appInfo = {
+                'rideflex': {
+                    name: 'RideFlex',
+                    email: 'support@yourdomain.com'
+                },
+                'moonstore': {
+                    name: 'Moon Store',
+                    email: 'support@yourdomain.com'
+                }
+            };
+            
+            const info = appInfo[selectedValue];
+            
+            if (info) {
+                appName.textContent = info.name;
+                supportEmail.textContent = info.email;
+                supportEmail.href = 'mailto:' + info.email;
+                supportContent.classList.remove('hidden');
+            }
+        }
+    </script>
 </body>
 </html>
