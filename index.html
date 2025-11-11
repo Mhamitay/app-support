@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Your App Name] Support</title>
+    <title>App Support</title>
     <style>
         * {
             margin: 0;
@@ -12,259 +12,317 @@
         }
 
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f7fa;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         .container {
-            background: white;
-            max-width: 700px;
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            padding: 50px;
-            animation: fadeIn 0.6s ease-in;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        header {
+            text-align: center;
+            margin-bottom: 50px;
         }
 
         h1 { 
-            color: #667eea;
+            color: #1a202c;
             font-size: 2.5em;
-            margin-bottom: 20px;
-            text-align: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        p {
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 15px;
-            font-size: 1.1em;
-        }
-
-        strong {
-            color: #667eea;
-        }
-
-        ul {
-            list-style: none;
-            margin: 30px 0;
-        }
-
-        ul li {
-            background: #f8f9ff;
-            padding: 15px 20px;
-            border-radius: 10px;
-            margin: 10px 0;
-            border-left: 4px solid #667eea;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        ul li:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
-        }
-
-        a { 
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        a:hover { 
-            color: #764ba2;
-        }
-
-        .response-time {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            margin: 30px 0;
-            font-weight: 500;
-        }
-
-        footer { 
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 2px solid #f0f0f0;
-            text-align: center;
-            color: #999;
-            font-size: 0.9em;
-        }
-
-        .developer {
-            margin-top: 15px;
-            color: #667eea;
-            font-weight: 600;
-            font-size: 1em;
-        }
-
-        .developer span {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
             font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
         }
 
-        .app-selector {
-            background: #f8f9ff;
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            border: 2px solid #667eea;
+        .subtitle {
+            color: #718096;
+            font-size: 1.1em;
+            font-weight: 400;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .app-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: 2px solid transparent;
             text-align: center;
         }
 
-        .app-selector label {
-            display: block;
-            color: #667eea;
+        .app-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            border-color: #3182ce;
+        }
+
+        .app-card.active {
+            border-color: #3182ce;
+            box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+        }
+
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: white;
+        }
+
+        .app-card:nth-child(2) .app-icon {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .app-name {
+            font-size: 1.5em;
             font-weight: 600;
-            font-size: 1.2em;
-            margin-bottom: 15px;
+            color: #2d3748;
+            margin-bottom: 8px;
         }
 
-        .app-selector select {
-            width: 100%;
-            max-width: 400px;
-            padding: 15px 20px;
-            font-size: 1.1em;
-            border: 2px solid #667eea;
-            border-radius: 10px;
-            background: white;
-            color: #333;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .app-selector select:hover {
-            border-color: #764ba2;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
-        }
-
-        .app-selector select:focus {
-            outline: none;
-            border-color: #764ba2;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        .app-description {
+            color: #718096;
+            font-size: 0.95em;
+            line-height: 1.5;
         }
 
         #supportContent {
-            animation: slideIn 0.5s ease-in;
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            pointer-events: none;
+        }
+
+        #supportContent.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
         }
 
         #supportContent.hidden {
             display: none;
         }
 
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .support-header {
+            text-align: center;
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .support-header h2 {
+            color: #2d3748;
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .support-header p {
+            color: #718096;
+            font-size: 1em;
+        }
+
+        .contact-info {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .contact-label {
+            color: #4a5568;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .contact-value {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1em;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: #3182ce;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        .contact-value a {
+            color: #2d3748;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .contact-value a:hover {
+            color: #3182ce;
+        }
+
+        .info-box {
+            background: #edf2f7;
+            border-left: 4px solid #3182ce;
+            border-radius: 8px;
+            padding: 20px 25px;
+            color: #2d3748;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        footer { 
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e2e8f0;
+            color: #a0aec0;
+            font-size: 0.9em;
+        }
+
+        .developer {
+            margin-top: 12px;
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        .developer span {
+            color: #3182ce;
+            font-weight: 600;
         }
 
         @media (max-width: 600px) {
-            .container {
-                padding: 30px 20px;
-            }
-            
             h1 {
                 font-size: 2em;
+            }
+            
+            .apps-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            #supportContent {
+                padding: 30px 20px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>App Support</h1>
-        
-        <div class="app-selector">
-            <label for="appSelect">Select Your App:</label>
-            <select id="appSelect" onchange="updateAppInfo()">
-                <option value="">-- Choose an app --</option>
-                <option value="rideflex">RideFlex</option>
-                <option value="moonstore">Moon Store</option>
-            </select>
+        <header>
+            <h1>App Support</h1>
+            <p class="subtitle">Select an app to get support</p>
+        </header>
+
+        <div class="apps-grid">
+            <div class="app-card" onclick="selectApp('rideflex')">
+                <div class="app-icon">R</div>
+                <div class="app-name">RideFlex</div>
+                <div class="app-description">Ride sharing platform</div>
+            </div>
+
+            <div class="app-card" onclick="selectApp('moonstore')">
+                <div class="app-icon">M</div>
+                <div class="app-name">Moon Store</div>
+                <div class="app-description">E-commerce solution</div>
+            </div>
         </div>
 
         <div id="supportContent" class="hidden">
-            <p>Thank you for using <strong id="appName"></strong>!</p>
-            <p>If you have any questions, issues, or feedback, please contact us using the details below:</p>
-            
-            <ul>
-                <li>📧 Email: <a href="mailto:support@yourdomain.com" id="supportEmail">support@yourdomain.com</a></li>
-            </ul>
-        </div>
+            <div class="support-header">
+                <h2 id="appName"></h2>
+                <p>We're here to help you</p>
+            </div>
 
-        <div class="response-time">
-            <p>⏱️ We typically respond within 24–48 hours</p>
+            <div class="contact-info">
+                <div class="contact-label">Contact Support</div>
+                <div class="contact-value">
+                    <div class="contact-icon">✉</div>
+                    <a href="mailto:support@yourdomain.com" id="supportEmail">support@yourdomain.com</a>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <strong>Response Time:</strong> We typically respond within 24–48 hours during business days.
+            </div>
         </div>
 
         <footer>
-            <p>© 2025 [Your Company Name]. All rights reserved.</p>
+            <p>© 2025 Your Company. All rights reserved.</p>
             <p class="developer">Developed by <span>Hamitay</span></p>
         </footer>
     </div>
 
     <script>
-        function updateAppInfo() {
-            const select = document.getElementById('appSelect');
+        let selectedCard = null;
+
+        function selectApp(appId) {
             const supportContent = document.getElementById('supportContent');
             const appName = document.getElementById('appName');
             const supportEmail = document.getElementById('supportEmail');
             
-            const selectedValue = select.value;
+            // Remove active class from all cards
+            document.querySelectorAll('.app-card').forEach(card => {
+                card.classList.remove('active');
+            });
             
-            if (selectedValue === '') {
-                supportContent.classList.add('hidden');
-                return;
-            }
+            // Add active class to selected card
+            event.currentTarget.classList.add('active');
             
             // App-specific information
             const appInfo = {
                 'rideflex': {
-                    name: 'RideFlex',
+                    name: 'RideFlex Support',
                     email: 'support@yourdomain.com'
                 },
                 'moonstore': {
-                    name: 'Moon Store',
+                    name: 'Moon Store Support',
                     email: 'support@yourdomain.com'
                 }
             };
             
-            const info = appInfo[selectedValue];
+            const info = appInfo[appId];
             
             if (info) {
                 appName.textContent = info.name;
                 supportEmail.textContent = info.email;
                 supportEmail.href = 'mailto:' + info.email;
+                
                 supportContent.classList.remove('hidden');
+                // Small delay to trigger transition
+                setTimeout(() => {
+                    supportContent.classList.add('visible');
+                }, 10);
+                
+                // Smooth scroll to support content
+                supportContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
         }
     </script>
