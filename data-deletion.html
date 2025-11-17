@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Data Deletion Request</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+      background:#f5f7fa;
+      margin:0; padding:40px 20px; color:#2d3748;
+    }
+    .container { max-width:800px; margin:0 auto; }
+    h1 { font-size:2.2rem; margin:0 0 8px; letter-spacing:-0.5px; }
+    .subtitle { color:#718096; margin-bottom:30px; }
+    form { background:#fff; padding:32px 36px; border-radius:20px; box-shadow:0 2px 6px rgba(0,0,0,0.08); }
+    fieldset { border:none; margin:0 0 28px; padding:0; }
+    legend { font-weight:600; margin-bottom:12px; font-size:1.05rem; }
+    label { display:block; font-size:0.85rem; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; margin:18px 0 6px; color:#4a5568; }
+    input[type=text], input[type=email], select, textarea {
+      width:100%; padding:14px 16px; border:2px solid #e2e8f0; border-radius:12px; background:#f7fafc;
+      font:inherit; resize:vertical; min-height:54px; transition:border-color .2s, background .2s;
+    }
+    input:focus, select:focus, textarea:focus { outline:none; border-color:#3182ce; background:#fff; }
+    .inline-group { display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+    .checkbox-group, .scope-extra { margin-top:10px; }
+    .checkbox-item { display:flex; align-items:flex-start; gap:10px; margin:10px 0; background:#edf2f7; padding:12px 14px; border-radius:12px; }
+    .checkbox-item input { margin-top:2px; }
+    .pill-hint { font-size:0.7rem; background:#3182ce; color:#fff; padding:4px 8px; border-radius:999px; margin-left:8px; }
+    .help { font-size:0.75rem; color:#718096; margin-top:6px; line-height:1.4; }
+    button[type=submit] {
+      appearance:none; border:none; background:#3182ce; color:#fff; font-weight:600; font-size:1rem; padding:16px 28px; border-radius:14px; cursor:pointer; letter-spacing:0.5px; width:100%; margin-top:6px; box-shadow:0 4px 12px rgba(49,130,206,0.4); transition:background .18s, transform .18s;
+    }
+    button[type=submit]:hover { background:#256bb0; transform:translateY(-2px); }
+    button[type=submit]:active { transform:translateY(0); }
+    .note-box { background:#edf2f7; border-left:4px solid #3182ce; padding:18px 20px; border-radius:10px; font-size:0.85rem; margin:0 0 30px; }
+    .app-other { display:none; }
+    .scope-specific-input { display:none; }
+    footer { text-align:center; margin-top:50px; font-size:0.75rem; color:#a0aec0; }
+    a.back { display:inline-flex; align-items:center; gap:6px; margin-bottom:22px; text-decoration:none; font-weight:600; color:#3182ce; }
+    a.back:hover { text-decoration:underline; }
+    @media (max-width:640px){ form { padding:26px 24px; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="index.html">← Back to Support</a>
+    <h1>Data Deletion Request</h1>
+    <p class="subtitle">Submit a formal request to remove your personal data from our systems.</p>
+    <div class="note-box">
+      Deletions are irreversible. For security, we may email you to verify ownership before processing. Typical processing time: 7–14 days.
+    </div>
+    <form id="deletionForm" novalidate>
+      <fieldset>
+        <legend>Account & App</legend>
+        <label for="app">Application</label>
+        <select id="app" name="app" required>
+          <option value="" disabled selected>Select an app…</option>
+          <option value="RideFlex">RideFlex</option>
+          <option value="Moon Store">Moon Store</option>
+          <option value="Other">Other (specify)</option>
+        </select>
+        <div class="help">Choose the product the request applies to.</div>
+        <div class="app-other" id="appOtherWrap">
+          <label for="appOther">Other App Name</label>
+          <input type="text" id="appOther" name="appOther" placeholder="Enter app name" />
+        </div>
+        <div class="inline-group">
+          <div>
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Jane Doe" required />
+          </div>
+          <div>
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+        </div>
+        <label for="userId">User ID (if shown in app)</label>
+        <input type="text" id="userId" name="userId" placeholder="Optional" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Data Scope</legend>
+        <div class="checkbox-group">
+          <div class="checkbox-item">
+            <input type="checkbox" id="scope-all" name="scope" value="Full Account" />
+            <label for="scope-all">Delete entire account data <span class="pill-hint">recommended</span></label>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="scope-specific" name="scope" value="Specific Data" />
+            <label for="scope-specific">Delete specific feature / dataset only</label>
+          </div>
+        </div>
+        <div id="scopeSpecificInput" class="scope-specific-input">
+          <label for="specificDetails">Describe specific data to delete</label>
+            <textarea id="specificDetails" name="specificDetails" placeholder="e.g. Ride history from July 2024, saved payment methods…" ></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Reason (Optional)</legend>
+        <label for="reason">Reason / Context</label>
+        <textarea id="reason" name="reason" placeholder="Tell us why you are requesting deletion (helps us improve)." ></textarea>
+        <div class="help">Do not include passwords or sensitive financial info.</div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Confirmation</legend>
+        <div class="checkbox-item" style="background:#fff; border:2px solid #e2e8f0;">
+          <input type="checkbox" id="confirm" required />
+          <label for="confirm">I understand this action is permanent and cannot be undone.</label>
+        </div>
+      </fieldset>
+
+      <button type="submit">Generate Request Email</button>
+    </form>
+    <footer>© 2025 Hamitay • Data Privacy</footer>
+  </div>
+<script>
+(function(){
+  const appSelect = document.getElementById('app');
+  const appOtherWrap = document.getElementById('appOtherWrap');
+  const scopeSpecific = document.getElementById('scope-specific');
+  const scopeSpecificInput = document.getElementById('scopeSpecificInput');
+  const form = document.getElementById('deletionForm');
+
+  appSelect.addEventListener('change', () => {
+    if(appSelect.value === 'Other') { appOtherWrap.style.display='block'; } else { appOtherWrap.style.display='none'; }
+  });
+  scopeSpecific.addEventListener('change', () => {
+    scopeSpecificInput.style.display = scopeSpecific.checked ? 'block':'none';
+  });
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    if(!form.reportValidity()) return;
+    const appVal = appSelect.value === 'Other' ? (document.getElementById('appOther').value || 'Other') : appSelect.value;
+    const fullName = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const userId = document.getElementById('userId').value.trim();
+    const reason = document.getElementById('reason').value.trim();
+    const scopeAll = document.getElementById('scope-all').checked;
+    const scopeSpec = scopeSpecific.checked;
+    const specificDetails = document.getElementById('specificDetails').value.trim();
+
+    const scopeParts = [];
+    if(scopeAll) scopeParts.push('Full Account');
+    if(scopeSpec) scopeParts.push('Specific Data: ' + (specificDetails || 'Not detailed'));
+    if(scopeParts.length === 0) scopeParts.push('Not specified');
+
+    const lines = [
+      `App: ${appVal}`,
+      `Name: ${fullName}`,
+      `Email: ${email}`,
+      userId? `User ID: ${userId}` : '',
+      `Data Scope: ${scopeParts.join(' | ')}`,
+      reason? `Reason: ${reason}` : '',
+      'Confirmation: User acknowledges irreversible deletion.'
+    ].filter(Boolean);
+
+    const subject = encodeURIComponent(`[Data Deletion Request] ${appVal} - ${fullName}`);
+    const body = encodeURIComponent(lines.join('\n'));
+    window.location.href = `mailto:support@hamitay.com?subject=${subject}&body=${body}`;
+  });
+})();
+</script>
+</body>
+</html>
